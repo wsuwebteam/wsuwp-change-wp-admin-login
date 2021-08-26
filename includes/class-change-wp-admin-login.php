@@ -294,7 +294,9 @@ if ( defined( 'ABSPATH' ) && ! class_exists( 'Change_WP_Admin_Login' ) ) {
 
 			if ( is_admin() && ! is_user_logged_in() && ! defined( 'DOING_AJAX' ) ) {
 
-				wp_safe_redirect( '/wsu-login' );
+				nocache_headers();
+
+				wp_safe_redirect( $this->new_login_url() );
 
 				die();
 				//wp_die( __( 'You must log in to access the admin area.', 'change-wp-admin-login' ) );
